@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/add">Add a Car</a><br /> <a href="/catadd">Add a Category</a><br /> <a href="/">Show Cars</a><br />
+<table>
+    <tr>
+        <th>Manufacturer</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>MSRP</th>
+        <th>Category</th>
+        <td>Actions</td>
+    </tr>
+    <tr th:each="car : ${cars}">
+        <td th:text="${car.manufacturer}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.year}"></td>
+        <td th:text="${car.msrp}"></td>
+
+    </tr>
+    </tr>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.name}"></td>
+        <!--<div th:replace="categoryList :: car"></div>-->
+        </td>
+        <input type="submit" value ="Submit" />
+        <!--<td th:text="${car.name}"></td>-->
+        <!--<td th:text="${car.category.name}"></td>-->
+        <td>
+            <a th:href="@{/carList/{id}(id=${car.id})}">Car Listing</a>
+            <a th:href="@{/update/{id}(id=${car.id})}">Update List</a>
+            <a th:href="@{/delete/{id}(id=${car.id})}">Delete List</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
